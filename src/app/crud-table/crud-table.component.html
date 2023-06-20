@@ -1,0 +1,33 @@
+<input type="text" [(ngModel)]="newCategory" placeholder="New Category">
+<button (click)="addCategory()">Add</button>
+<table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <ng-container *ngIf="editingIndex === i">
+          <input type="text" [(ngModel)]="editingValue">
+        </ng-container>
+        <ng-container *ngIf="editingIndex !== i">
+          {{ data }}
+        </ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="editingIndex === i">
+          <button (click)="updateCategory()">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </ng-container>
+        <ng-container *ngIf="editingIndex !== i">
+          <button (click)="startEdit(i, data)">Edit</button>
+          <button (click)="deleteCategory(i)">Delete</button>
+        </ng-container>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  
