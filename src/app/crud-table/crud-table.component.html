@@ -1,4 +1,4 @@
-<input type="text" [(ngModel)]="newCategory" placeholder="New Category">
+<textarea  type="text" [(ngModel)]="newCategory" placeholder="New Joke"></textarea>
 <button (click)="addCategory()">Add</button>
 <table>
     <thead>
@@ -11,7 +11,7 @@
       <td>{{ i + 1 }}</td>
       <td>
         <ng-container *ngIf="editingIndex === i">
-          <input type="text" [(ngModel)]="editingValue">
+          <textarea type="text" [(ngModel)]="editingValue"></textarea>
         </ng-container>
         <ng-container *ngIf="editingIndex !== i">
           {{ data }}
